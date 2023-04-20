@@ -1,4 +1,4 @@
-package com.example.twd_quiz
+package com.twd_quiz
 
 import io.flutter.embedding.android.FlutterActivity
 

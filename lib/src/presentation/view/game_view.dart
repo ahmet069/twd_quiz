@@ -21,7 +21,6 @@ class GameView extends StatefulWidget {
 
 class _GameViewState extends State<GameView> {
   void _checkAnswer(Question question, String answer, BuildContext context) {
-    print('checkanswer');
     if (question.trueAnswer == answer) {
       context.read<GameBloc>().add(const IncreaseTrue());
     } else {
@@ -147,6 +146,8 @@ class _GameViewState extends State<GameView> {
       child: ElevatedButton(
         onPressed: () async {
           if (state.currentQuestionIndex == 9) {
+            _checkAnswer(item, title, context);
+            context.read<GameBloc>().add(const FinishGame());
             await router.replace(const ResultRouter());
           } else {
             _checkAnswer(item, title, context);
