@@ -1,7 +1,5 @@
 // ignore_for_file: deprecated_member_use
 
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,6 +7,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../main.dart';
 import '../../config/router/app_router.dart';
+import '../../core/constants/app_constants.dart';
 import '../../domain/entities/question/question.dart';
 import '../bloc/game_bloc/game_bloc.dart';
 
@@ -37,7 +36,10 @@ class _GameViewState extends State<GameView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: _actionButtonExit(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerTop,
       body: Container(
+        padding: const EdgeInsets.only(top: 75),
         width: 1.sw,
         height: 1.sh,
         decoration: const BoxDecoration(
@@ -46,8 +48,47 @@ class _GameViewState extends State<GameView> {
             fit: BoxFit.cover,
           ),
         ),
-        alignment: Alignment.center,
+        alignment: Alignment.topCenter,
         child: _questionContainer(),
+      ),
+    );
+  }
+
+  Widget _actionButtonExit() {
+    return SizedBox(
+      width: 66,
+      height: 66,
+      child: FloatingActionButton(
+        onPressed: () async {
+          // await router.replace(const HomeRouter());
+          return showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: const Text('Are you sure you want to exit?'),
+                actions: <Widget>[
+                  ElevatedButton(
+                    onPressed: () => Navigator.of(context).pop(false),
+                    child: const Text('NO'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () async {
+                      Navigator.of(context).pop(true);
+                      await router.replace(const HomeRouter());
+                    },
+                    child: const Text('YES'),
+                  ),
+                ],
+              );
+            },
+          );
+        },
+        backgroundColor: Colors.red,
+        child: SvgPicture.asset(
+          ApplicationConstants.exit,
+          color: Colors.white,
+          width: 32,
+        ),
       ),
     );
   }
@@ -55,7 +96,7 @@ class _GameViewState extends State<GameView> {
   Widget _questionContainer() {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 17),
-      height: .6.sh,
+      height: .7.sh,
       width: 1.sw - 20,
       decoration: BoxDecoration(
         color: const Color.fromARGB(255, 255, 255, 255),
