@@ -15,6 +15,7 @@ class GameStarted extends GameState {
   final int currentQuestionIndex;
   final int point;
   final List<Question> data;
+  final String currentAnswer;
 
   const GameStarted({
     required this.ttrue,
@@ -22,10 +23,11 @@ class GameStarted extends GameState {
     required this.ffalse,
     required this.point,
     required this.data,
+    required this.currentAnswer,
   });
 
   @override
-  List<Object> get props => [ttrue, currentQuestionIndex, ffalse];
+  List<Object> get props => [ttrue, currentQuestionIndex, ffalse, currentAnswer];
 }
 
 class GameFinished extends GameState {
@@ -33,11 +35,13 @@ class GameFinished extends GameState {
   final int ffalse;
   final int currentQuestionIndex;
   final int point;
+  final String currentAnswer;
 
   const GameFinished({
     required this.ttrue,
     required this.ffalse,
     required this.currentQuestionIndex,
     required this.point,
+    required this.currentAnswer,
   });
 }

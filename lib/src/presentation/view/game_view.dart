@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, use_build_context_synchronously
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +49,8 @@ void _createInterstitialAd() {
 Color trueBackground = Colors.transparent;
 
 class _GameViewState extends State<GameView> {
-  void _checkAnswer(Question question, String answer, BuildContext context) async {
+  Future<void> _checkAnswer(Question question, String answer, BuildContext context) async {
+    await Future.delayed(const Duration(milliseconds: 800));
     if (question.trueAnswer == answer) {
       trueBackground = Colors.green;
     } else {}
@@ -226,23 +227,39 @@ class _GameViewState extends State<GameView> {
 
   Widget _option(String title, GameStarted state, BuildContext context) {
     final item = state.data[state.currentQuestionIndex];
-    final Color optionColor = item.trueAnswer == title ? Colors.green : Colors.red;
+    print(state.currentAnswer.length);
+    // final Color answeredOptionColor = item.trueAnswer == title
+    //     ? state.currentAnswer.length > 0
+    //         ? Colors.green
+    //         : Colors.transparent
+    //     : state.currentAnswer == title
+    //         ? Colors.red
+    //         : Colors.transparent;
+    final Color answeredOptionColor = state.currentAnswer.length > 0
+        ? item.trueAnswer == title
+            ? Colors.green
+            : Colors.transparent
+        : Colors.transparent;
+    // if (state.currentAnswer.length > 0) {
+    //   Color optionColor = answeredOptionColor;
+    // }
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5),
       height: 48,
       width: .9.sw,
       child: ElevatedButton(
         onPressed: () async {
+          context.read<GameBloc>().add(AnswerQuestion(answer: title));
           if (state.currentQuestionIndex == 9) {
-            _checkAnswer(item, title, context);
+            await _checkAnswer(item, title, context);
             context.read<GameBloc>().add(const FinishGame());
             await router.replace(ResultRouter(interstitialAd: interstitialAd));
           } else {
-            _checkAnswer(item, title, context);
+            await _checkAnswer(item, title, context);
           }
         },
         style: ElevatedButton.styleFrom(
-          backgroundColor: true == true ? optionColor : Colors.transparent,
+          backgroundColor: answeredOptionColor,
           elevation: 0,
           shape: RoundedRectangleBorder(
             side: const BorderSide(),

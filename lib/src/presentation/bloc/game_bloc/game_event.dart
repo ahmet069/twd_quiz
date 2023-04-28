@@ -26,3 +26,10 @@ class IncreaseFalse extends GameEvent {
 class CheckAnswer extends GameEvent {
   const CheckAnswer();
 }
+
+class AnswerQuestion extends GameEvent {
+  final String answer;
+  const AnswerQuestion({
+    required this.answer,
+  });
+}

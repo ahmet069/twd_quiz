@@ -17,6 +17,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   late int ffalse;
   late int currentQuestionIndex;
   var dataList = <Question>[];
+  late String currentAnswer = '';
 
   GameBloc(this._usecase) : super(GameInitial()) {
     on<StartGame>(
@@ -27,14 +28,15 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         currentQuestionIndex = 0;
         dataList = await _usecase.getAllQuestions();
         dataList.shuffle(_seed);
+        currentAnswer = '';
         emit(
           GameStarted(
-            ttrue: ttrue,
-            currentQuestionIndex: currentQuestionIndex,
-            ffalse: ffalse,
-            point: point,
-            data: dataList,
-          ),
+              ttrue: ttrue,
+              currentQuestionIndex: currentQuestionIndex,
+              ffalse: ffalse,
+              point: point,
+              data: dataList,
+              currentAnswer: currentAnswer),
         );
       },
     );
@@ -43,35 +45,54 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       // point = 0;
       // ttrue = 0;
       // ffalse = 0;
+      currentAnswer = '';
       emit(GameFinished(
         currentQuestionIndex: currentQuestionIndex,
         ffalse: ffalse,
         ttrue: ttrue,
         point: point,
+        currentAnswer: currentAnswer,
       ));
     });
     on<IncreaseFalse>((event, emit) {
       ffalse++;
       currentQuestionIndex++;
-      point = point - 50;
+      point = point - 5;
+      currentAnswer = '';
+
       emit(GameStarted(
         ttrue: ttrue,
         currentQuestionIndex: currentQuestionIndex,
         ffalse: ffalse,
         point: point,
         data: dataList,
+        currentAnswer: currentAnswer,
       ));
     });
     on<IncreaseTrue>((event, emit) {
       ttrue++;
       currentQuestionIndex++;
-      point = point + 100;
+      point = point + 10;
+      currentAnswer = '';
       emit(GameStarted(
         ttrue: ttrue,
         currentQuestionIndex: currentQuestionIndex,
         ffalse: ffalse,
         point: point,
         data: dataList,
+        currentAnswer: currentAnswer,
+      ));
+    });
+    on<AnswerQuestion>((event, emit) {
+      currentAnswer = event.answer;
+      print(currentAnswer);
+      emit(GameStarted(
+        ttrue: ttrue,
+        currentQuestionIndex: currentQuestionIndex,
+        ffalse: ffalse,
+        point: point,
+        data: dataList,
+        currentAnswer: currentAnswer,
       ));
     });
   }
