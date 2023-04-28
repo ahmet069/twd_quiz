@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import '../../presentation/view/game_view.dart';
 import '../../presentation/view/home_view.dart';
 import '../../presentation/view/result_view.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+
 part 'app_router.gr.dart';
 
 @AdaptiveAutoRouter(

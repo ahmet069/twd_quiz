@@ -27,9 +27,13 @@ class _$AppRouter extends RootStackRouter {
       );
     },
     ResultRouter.name: (routeData) {
+      final args = routeData.argsAs<ResultRouterArgs>();
       return CustomPage<dynamic>(
         routeData: routeData,
-        child: const ResultView(),
+        child: ResultView(
+          key: args.key,
+          interstitialAd: args.interstitialAd,
+        ),
         transitionsBuilder: TransitionsBuilders.fadeIn,
         opaque: true,
         barrierDismissible: false,
@@ -83,14 +87,36 @@ class HomeRouter extends PageRouteInfo<void> {
 
 /// generated route for
 /// [ResultView]
-class ResultRouter extends PageRouteInfo<void> {
-  const ResultRouter()
-      : super(
+class ResultRouter extends PageRouteInfo<ResultRouterArgs> {
+  ResultRouter({
+    Key? key,
+    required InterstitialAd? interstitialAd,
+  }) : super(
           ResultRouter.name,
           path: '/ResultView',
+          args: ResultRouterArgs(
+            key: key,
+            interstitialAd: interstitialAd,
+          ),
         );
 
   static const String name = 'ResultRouter';
+}
+
+class ResultRouterArgs {
+  const ResultRouterArgs({
+    this.key,
+    required this.interstitialAd,
+  });
+
+  final Key? key;
+
+  final InterstitialAd? interstitialAd;
+
+  @override
+  String toString() {
+    return 'ResultRouterArgs{key: $key, interstitialAd: $interstitialAd}';
+  }
 }
 
 /// generated route for

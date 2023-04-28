@@ -1,12 +1,15 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import '../../../main.dart';
 import '../../config/router/app_router.dart';
+import '../../core/components/Admob/my_admob_banner.dart';
 import '../../core/constants/app_constants.dart';
 import '../../domain/entities/question/question.dart';
 import '../bloc/game_bloc/game_bloc.dart';
@@ -18,8 +21,38 @@ class GameView extends StatefulWidget {
   State<GameView> createState() => _GameViewState();
 }
 
+InterstitialAd? interstitialAd;
+//* interstitial
+void _createInterstitialAd() {
+  InterstitialAd.load(
+    adUnitId: kDebugMode
+        ? 'ca-app-pub-3940256099942544/8691691433' // test id
+        : 'ca-app-pub-4086698259318942/6450583384', // release id
+    request: const AdRequest(),
+    adLoadCallback: InterstitialAdLoadCallback(
+      onAdLoaded: (ad) {
+        interstitialAd = ad;
+        if (kDebugMode) {
+          print('intersititial succes');
+        }
+        // interstitialAd!.show();
+      },
+      onAdFailedToLoad: (LoadAdError error) {
+        if (kDebugMode) {
+          print('intersititial failed');
+        }
+      },
+    ),
+  );
+}
+
+Color trueBackground = Colors.transparent;
+
 class _GameViewState extends State<GameView> {
-  void _checkAnswer(Question question, String answer, BuildContext context) {
+  void _checkAnswer(Question question, String answer, BuildContext context) async {
+    if (question.trueAnswer == answer) {
+      trueBackground = Colors.green;
+    } else {}
     if (question.trueAnswer == answer) {
       context.read<GameBloc>().add(const IncreaseTrue());
     } else {
@@ -30,6 +63,7 @@ class _GameViewState extends State<GameView> {
   @override
   void initState() {
     context.read<GameBloc>().add(const StartGame());
+    _createInterstitialAd();
     super.initState();
   }
 
@@ -49,7 +83,19 @@ class _GameViewState extends State<GameView> {
           ),
         ),
         alignment: Alignment.topCenter,
-        child: _questionContainer(),
+        child: Padding(
+          padding: const EdgeInsets.only(bottom: 20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              _questionContainer(),
+              const MyAdmobBanner(
+                bannerId: 'ca-app-pub-4086698259318942/8795258277',
+                adSize: AdSize.largeBanner,
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -180,6 +226,7 @@ class _GameViewState extends State<GameView> {
 
   Widget _option(String title, GameStarted state, BuildContext context) {
     final item = state.data[state.currentQuestionIndex];
+    final Color optionColor = item.trueAnswer == title ? Colors.green : Colors.red;
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5),
       height: 48,
@@ -189,13 +236,13 @@ class _GameViewState extends State<GameView> {
           if (state.currentQuestionIndex == 9) {
             _checkAnswer(item, title, context);
             context.read<GameBloc>().add(const FinishGame());
-            await router.replace(const ResultRouter());
+            await router.replace(ResultRouter(interstitialAd: interstitialAd));
           } else {
             _checkAnswer(item, title, context);
           }
         },
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.white,
+          backgroundColor: true == true ? optionColor : Colors.transparent,
           elevation: 0,
           shape: RoundedRectangleBorder(
             side: const BorderSide(),
