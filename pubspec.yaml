@@ -24,6 +24,7 @@ dependencies:
   change_app_package_name: ^1.1.0
   circular_chart_flutter: ^0.0.2
   google_mobile_ads: ^2.4.0
+  connectivity_plus: ^3.0.6
 
 dev_dependencies:
   flutter_test:

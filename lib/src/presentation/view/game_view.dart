@@ -227,35 +227,28 @@ class _GameViewState extends State<GameView> {
 
   Widget _option(String title, GameStarted state, BuildContext context) {
     final item = state.data[state.currentQuestionIndex];
-    print(state.currentAnswer.length);
-    // final Color answeredOptionColor = item.trueAnswer == title
-    //     ? state.currentAnswer.length > 0
-    //         ? Colors.green
-    //         : Colors.transparent
-    //     : state.currentAnswer == title
-    //         ? Colors.red
-    //         : Colors.transparent;
     final Color answeredOptionColor = state.currentAnswer.length > 0
         ? item.trueAnswer == title
             ? Colors.green
             : Colors.transparent
         : Colors.transparent;
-    // if (state.currentAnswer.length > 0) {
-    //   Color optionColor = answeredOptionColor;
-    // }
+
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5),
       height: 48,
       width: .9.sw,
       child: ElevatedButton(
         onPressed: () async {
-          context.read<GameBloc>().add(AnswerQuestion(answer: title));
-          if (state.currentQuestionIndex == 9) {
-            await _checkAnswer(item, title, context);
-            context.read<GameBloc>().add(const FinishGame());
-            await router.replace(ResultRouter(interstitialAd: interstitialAd));
+          if (state.currentAnswer.isNotEmpty) {
           } else {
-            await _checkAnswer(item, title, context);
+            context.read<GameBloc>().add(AnswerQuestion(answer: title));
+            if (state.currentQuestionIndex == 9) {
+              await _checkAnswer(item, title, context);
+              context.read<GameBloc>().add(const FinishGame());
+              await router.replace(ResultRouter(interstitialAd: interstitialAd));
+            } else {
+              await _checkAnswer(item, title, context);
+            }
           }
         },
         style: ElevatedButton.styleFrom(
