@@ -69,11 +69,17 @@ class _HomeViewState extends State<HomeView> {
                   padding: EdgeInsets.only(top: 60.0),
                   child: MyAdmobBanner(
                     bannerId: 'ca-app-pub-4086698259318942/8570777432',
-                    adSize: AdSize.banner,
+                    adSize: AdSize.fullBanner,
                   ),
                 ),
                 ButtonArea(),
-                SizedBox(),
+                Padding(
+                  padding: EdgeInsets.only(top: 60.0),
+                  child: MyAdmobBanner(
+                    bannerId: 'ca-app-pub-4086698259318942/1853195962',
+                    adSize: AdSize.fullBanner,
+                  ),
+                ),
               ],
             ),
           ),

@@ -7,6 +7,7 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '../../../main.dart';
 import '../../config/color/app_color.dart';
 import '../../config/router/app_router.dart';
+import '../../core/components/Admob/my_admob_banner.dart';
 import '../../core/components/Button/main_buttons.dart';
 import '../bloc/game_bloc/game_bloc.dart';
 
@@ -39,97 +40,106 @@ class _ResultViewState extends State<ResultView> {
           ),
         ),
         alignment: Alignment.center,
-        child: BlocBuilder<GameBloc, GameState>(
-          builder: (context, state) {
-            if (state is GameFinished) {
-              return Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10),
-                width: 1.sw,
-                height: .75.sh,
-                decoration: BoxDecoration(
-                  color: AppColor.transparentWhite,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const MyAdmobBanner(
+              bannerId: 'ca-app-pub-4086698259318942/8279003512',
+              adSize: AdSize.fullBanner,
+            ),
+            _resultContainer(),
+            const MyAdmobBanner(
+              bannerId: 'ca-app-pub-4086698259318942/4339758505',
+              adSize: AdSize.fullBanner,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _resultContainer() {
+    return BlocBuilder<GameBloc, GameState>(
+      builder: (context, state) {
+        if (state is GameFinished) {
+          return Container(
+            margin: const EdgeInsets.symmetric(horizontal: 10),
+            width: 1.sw,
+            height: .75.sh,
+            decoration: BoxDecoration(
+              color: AppColor.transparentWhite,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Column(
                   children: [
-                    Column(
-                      children: [
-                        const Text(
-                          'YOUR POINT',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        AnimatedCircularChart(
-                          size: const Size(300, 300),
-                          initialChartData: <CircularStackEntry>[
-                            CircularStackEntry(
-                              <CircularSegmentEntry>[
-                                CircularSegmentEntry(
-                                  state.ffalse.toDouble() * 10,
-                                  Colors.red[600],
-                                  rankKey: 'remaining',
-                                ),
-                                CircularSegmentEntry(
-                                  state.ttrue.toDouble() * 10,
-                                  Colors.green[400],
-                                  rankKey: 'completed',
-                                ),
-                              ],
-                              rankKey: 'progress',
+                    const Text(
+                      'YOUR POINT',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    AnimatedCircularChart(
+                      size: const Size(300, 300),
+                      initialChartData: <CircularStackEntry>[
+                        CircularStackEntry(
+                          <CircularSegmentEntry>[
+                            CircularSegmentEntry(
+                              state.ffalse.toDouble() * 10,
+                              Colors.red[600],
+                              rankKey: 'remaining',
+                            ),
+                            CircularSegmentEntry(
+                              state.ttrue.toDouble() * 10,
+                              Colors.green[400],
+                              rankKey: 'completed',
                             ),
                           ],
-                          holeLabel: state.point.toString(),
-                          labelStyle: const TextStyle(
-                            fontSize: 50,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
-                          // chartType: CircularChartType.Radial,
-                          edgeStyle: SegmentEdgeStyle.round,
-                          percentageValues: true,
-                        )
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        MainButton(
-                          title: 'NEW QUIZ',
-                          onPressed: () async {
-                            await router.replace(const GameRouter());
-                          },
-                          backgroundColor: AppColor.transparentWhite,
-                          textColor: Colors.black,
-                        ),
-                        MainButton(
-                          title: 'HOME',
-                          onPressed: () async {
-                            await router.replace(const HomeRouter());
-                          },
-                          backgroundColor: AppColor.transparentWhite,
-                          textColor: Colors.black,
+                          rankKey: 'progress',
                         ),
                       ],
+                      holeLabel: state.point.toString(),
+                      labelStyle: const TextStyle(
+                        fontSize: 50,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                      // chartType: CircularChartType.Radial,
+                      edgeStyle: SegmentEdgeStyle.round,
+                      percentageValues: true,
                     )
                   ],
                 ),
-              );
-            }
-            return Container();
-            // return Container(
-            //   margin: const EdgeInsets.symmetric(horizontal: 10),
-            //   width: 1.sw,
-            //   height: .75.sh,
-            //   decoration: BoxDecoration(
-            //     color: AppColor.transparentWhite,
-            //     borderRadius: BorderRadius.circular(10),
-            //   ),
-            // );
-          },
-        ),
-      ),
+                Column(
+                  children: [
+                    MainButton(
+                      title: 'NEW QUIZ',
+                      onPressed: () async {
+                        await router.replace(const GameRouter());
+                      },
+                      backgroundColor: AppColor.transparentWhite,
+                      textColor: Colors.black,
+                    ),
+                    MainButton(
+                      title: 'HOME',
+                      onPressed: () async {
+                        await router.replace(const HomeRouter());
+                      },
+                      backgroundColor: AppColor.transparentWhite,
+                      textColor: Colors.black,
+                    ),
+                  ],
+                )
+              ],
+            ),
+          );
+        } else {
+          return Container();
+        }
+      },
     );
   }
 }
