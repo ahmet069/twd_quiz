@@ -62,24 +62,6 @@ class _ResultViewState extends State<ResultView> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        // Container(
-                        //   padding: const EdgeInsets.all(10),
-                        //   width: .65.sw,
-                        //   height: .65.sw,
-                        //   decoration: BoxDecoration(
-                        //     color: Colors.deepOrangeAccent,
-                        //     borderRadius: BorderRadius.circular(200),
-                        //   ),
-                        //   alignment: Alignment.center,
-                        //   margin: const EdgeInsets.symmetric(vertical: 20),
-                        //   child: Text(
-                        //     state.point.toString(),
-                        //     style: const TextStyle(
-                        //       fontSize: 80,
-                        //       fontWeight: FontWeight.bold,
-                        //     ),
-                        //   ),
-                        // ),
                         AnimatedCircularChart(
                           size: const Size(300, 300),
                           initialChartData: <CircularStackEntry>[

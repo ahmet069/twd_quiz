@@ -8,6 +8,7 @@ import '../../config/router/app_router.dart';
 import '../../core/components/Admob/my_admob_banner.dart';
 import '../../core/components/Button/main_buttons.dart';
 import '../../core/components/Button/transparent_button.dart';
+import '../widget/home/button_area.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -63,54 +64,16 @@ class _HomeViewState extends State<HomeView> {
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Padding(
+              children: const [
+                Padding(
                   padding: EdgeInsets.only(top: 60.0),
                   child: MyAdmobBanner(
                     bannerId: 'ca-app-pub-4086698259318942/8570777432',
                     adSize: AdSize.banner,
                   ),
                 ),
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: const Color.fromARGB(204, 255, 255, 255),
-                  ),
-                  child: Column(
-                    children: const [
-                      Text(
-                        'TWD QUIZ',
-                        style: TextStyle(
-                          // color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 45,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.symmetric(vertical: 20),
-                  child: Column(
-                    children: [
-                      MainButton(
-                        title: 'START QUIZ',
-                        onPressed: () async {
-                          await router.replace(const GameRouter());
-                        },
-                        backgroundColor: Colors.white,
-                        textColor: Colors.black,
-                      ),
-                      TransparentButton(
-                        bacroundColor: const Color.fromARGB(83, 192, 192, 192),
-                        textColor: Colors.white,
-                        title: 'How To Play ?',
-                        onPressed: () {},
-                      ),
-                    ],
-                  ),
-                )
+                ButtonArea(),
+                SizedBox(),
               ],
             ),
           ),
