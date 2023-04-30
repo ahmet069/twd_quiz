@@ -354,6 +354,117 @@ class QuestionData {
           'Patricia',
         ],
       },
+      {
+        'id': 31,
+        'question':
+            "In which season did Rick say the phrase 'we tell ourselves we're the walking dead'?",
+        'true_answer': '5',
+        'options': [
+          '3',
+          '4',
+          '5',
+          '6',
+        ],
+      },
+      {
+        'id': 32,
+        'question': 'Where did the story of season 3 take place?',
+        'true_answer': 'Prison',
+        'options': [
+          'Alexandria',
+          'Farm',
+          'Prison',
+          'Oceanside',
+        ],
+      },
+      {
+        'id': 33,
+        'question': 'Where is Glenn from ?',
+        'true_answer': 'Korea',
+        'options': [
+          'Japanese',
+          'Chinese',
+          'Korean',
+          'Thai',
+        ],
+      },
+      {
+        'id': 34,
+        'question': "What is the name of Negan's group?",
+        'true_answer': 'Saviors',
+        'options': [
+          'Negan',
+          'Thieves',
+          'Saviors',
+          'Negans',
+        ],
+      },
+      {
+        'id': 35,
+        'question': '"You can breathe. You can blink. You can cry." sözleri kime aittir ?',
+        'true_answer': 'Negan',
+        'options': [
+          'Governor',
+          'Negan',
+          'Rick',
+          'Daryl',
+        ],
+      },
+      {
+        'id': 36,
+        'question': 'What season does Rick go missing?',
+        'true_answer': '9',
+        'options': [
+          '7',
+          '8',
+          '9',
+          '10',
+        ],
+      },
+      {
+        'id': 37,
+        'question': "Who does the phrase 'he killed glenn' belong to?",
+        'true_answer': 'Maggie',
+        'options': [
+          'Daryl',
+          'Carl',
+          'Rick',
+          'Maggie',
+        ],
+      },
+      {
+        'id': 38,
+        'question': 'How many seasons did The Walking Dead series last?',
+        'true_answer': '11',
+        'options': [
+          '13',
+          '12',
+          '11',
+          '10',
+        ],
+      },
+      {
+        'id': 39,
+        'question': 'In which season were Glenn and Abraham killed ?',
+        'true_answer': '7',
+        'options': [
+          '5',
+          '6',
+          '7',
+          '8',
+        ],
+      },
+      {
+        'id': 40,
+        'question': 'What did Glenn find in the farm barn?',
+        'true_answer': 'Walkers',
+        'options': [
+          'Walkers',
+          'Cars',
+          'Sofia',
+          'Weaphones',
+        ],
+      },
     ];
   }
 }
