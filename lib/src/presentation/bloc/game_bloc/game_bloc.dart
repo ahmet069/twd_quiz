@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
@@ -83,9 +84,13 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         currentAnswer: currentAnswer,
       ));
     });
-    on<AnswerQuestion>((event, emit) {
+    on<AnswerQuestion>((event, emit) async {
       currentAnswer = event.answer;
-      print(currentAnswer);
+      // await AssetsAudioPlayer.newPlayer().open(
+      //   Audio('assets/audios/blood.mp3'),
+      //   volume: -5,
+      //   showNotification: true,
+      // );
       emit(GameStarted(
         ttrue: ttrue,
         currentQuestionIndex: currentQuestionIndex,
@@ -94,6 +99,12 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         data: dataList,
         currentAnswer: currentAnswer,
       ));
+    });
+    on<StartVoiceEffect>((event, emit) async {
+      await AssetsAudioPlayer.newPlayer().open(
+        Audio('assets/audios/zombie_roar.mp3'),
+        showNotification: true,
+      );
     });
   }
 }

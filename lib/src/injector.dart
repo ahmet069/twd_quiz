@@ -5,6 +5,7 @@ import 'data/repositories/question_repository_impl.dart';
 import 'domain/repositories/question_repository.dart';
 import 'domain/usecase/question_usecase.dart';
 import 'presentation/bloc/game_bloc/game_bloc.dart';
+import 'presentation/bloc/home_bloc/home_bloc.dart';
 
 final injector = GetIt.instance;
 
@@ -17,5 +18,6 @@ Future<void> init() async {
     //* USECASE
     ..registerLazySingleton<QuestionUsecase>(() => QuestionUsecase(injector()))
     //* BLOC
+    ..registerFactory(() => HomeBloc())
     ..registerFactory(() => GameBloc(injector()));
 }

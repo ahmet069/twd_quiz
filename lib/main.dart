@@ -6,6 +6,7 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'src/config/router/app_router.dart';
 import 'src/injector.dart' as di;
 import 'src/presentation/bloc/game_bloc/game_bloc.dart';
+import 'src/presentation/bloc/home_bloc/home_bloc.dart';
 
 void main() async {
   await _initalize();
@@ -29,10 +30,12 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => di.injector<GameBloc>()),
+        BlocProvider(create: (_) => di.injector<HomeBloc>()),
       ],
       child: ScreenUtilInit(
         designSize: const Size(360, 800),
         builder: (BuildContext context, Widget? child) {
+          context.read<HomeBloc>().add(const StartMusic());
           return MaterialApp.router(
             routerDelegate: router.delegate(),
             routeInformationParser: router.defaultRouteParser(),

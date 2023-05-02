@@ -41,7 +41,7 @@ class _ResultViewState extends State<ResultView> {
         ),
         alignment: Alignment.center,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const MyAdmobBanner(
               bannerId: 'ca-app-pub-4086698259318942/8279003512',

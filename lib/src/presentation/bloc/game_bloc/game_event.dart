@@ -27,6 +27,10 @@ class CheckAnswer extends GameEvent {
   const CheckAnswer();
 }
 
+class StartVoiceEffect extends GameEvent {
+  const StartVoiceEffect();
+}
+
 class AnswerQuestion extends GameEvent {
   final String answer;
   const AnswerQuestion({

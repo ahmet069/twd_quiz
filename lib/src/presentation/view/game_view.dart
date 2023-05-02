@@ -13,6 +13,7 @@ import '../../core/components/Admob/my_admob_banner.dart';
 import '../../core/constants/app_constants.dart';
 import '../../domain/entities/question/question.dart';
 import '../bloc/game_bloc/game_bloc.dart';
+import '../bloc/home_bloc/home_bloc.dart';
 
 class GameView extends StatefulWidget {
   const GameView({super.key});
@@ -64,6 +65,7 @@ class _GameViewState extends State<GameView> {
   @override
   void initState() {
     context.read<GameBloc>().add(const StartGame());
+    context.read<HomeBloc>().add(const StopMusic());
     _createInterstitialAd();
     super.initState();
   }
