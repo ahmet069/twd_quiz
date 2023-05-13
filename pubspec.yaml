@@ -26,6 +26,7 @@ dependencies:
   google_mobile_ads: ^2.4.0
   connectivity_plus: ^3.0.6
   assets_audio_player: ^3.0.6
+  fl_chart: ^0.62.0
 
 dev_dependencies:
   flutter_test:

@@ -16,9 +16,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       //   autoStart: true,
       //   showNotification: true,
       // );
-      audioPlayer.open(
-        Audio('assets/audios/music.mp3'),
-      );
+      // audioPlayer.open(
+      //   Audio('assets/audios/music.mp3'),
+      // );
     });
     on<StopMusic>((event, emit) async {
       audioPlayer.stop();

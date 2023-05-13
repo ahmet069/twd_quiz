@@ -73,15 +73,13 @@ class _GameViewState extends State<GameView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: _actionButtonExit(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerTop,
       body: Container(
         padding: const EdgeInsets.only(top: 75),
         width: 1.sw,
         height: 1.sh,
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/gamebg.jpg'),
+            image: AssetImage('assets/images/homebg2.jpg'),
             fit: BoxFit.cover,
           ),
         ),
@@ -94,7 +92,7 @@ class _GameViewState extends State<GameView> {
               _questionContainer(),
               const MyAdmobBanner(
                 bannerId: 'ca-app-pub-4086698259318942/8795258277',
-                adSize: AdSize.largeBanner,
+                adSize: AdSize.fullBanner,
               )
             ],
           ),
@@ -105,8 +103,8 @@ class _GameViewState extends State<GameView> {
 
   Widget _actionButtonExit() {
     return SizedBox(
-      width: 66,
-      height: 66,
+      width: 55,
+      height: 55,
       child: FloatingActionButton(
         onPressed: () async {
           // await router.replace(const HomeRouter());
@@ -136,7 +134,7 @@ class _GameViewState extends State<GameView> {
         child: SvgPicture.asset(
           ApplicationConstants.exit,
           color: Colors.white,
-          width: 32,
+          width: 28,
         ),
       ),
     );
@@ -148,7 +146,7 @@ class _GameViewState extends State<GameView> {
       height: .7.sh,
       width: 1.sw - 20,
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 255, 255, 255),
+        color: const Color.fromARGB(200, 0, 0, 0),
         borderRadius: BorderRadius.circular(20),
       ),
       child: BlocBuilder<GameBloc, GameState>(
@@ -162,33 +160,56 @@ class _GameViewState extends State<GameView> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
-                      children: [
-                        SvgPicture.asset(
-                          'assets/icon/question_mark.svg',
-                          height: 20,
-                          color: const Color(0xff404040),
-                        ),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        Text(
-                          '${state.currentQuestionIndex + 1} / 10',
-                          style: const TextStyle(fontSize: 16),
-                        ),
-                      ],
+                    Container(
+                      padding: const EdgeInsets.only(top: 4, bottom: 4, left: 4, right: 5),
+                      decoration: BoxDecoration(
+                        color: Colors.white70,
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: Row(
+                        children: [
+                          SvgPicture.asset(
+                            'assets/icon/question_mark.svg',
+                            height: 24,
+                            color: const Color(0xff404040),
+                          ),
+                          const SizedBox(
+                            width: 4,
+                          ),
+                          Text(
+                            '${state.currentQuestionIndex + 1} / 10',
+                            style: const TextStyle(
+                              fontSize: 16,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                    Row(
-                      children: [
-                        SvgPicture.asset(
-                          'assets/icon/point.svg',
-                          width: 20,
-                        ),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        Text(state.point.toString()),
-                      ],
+                    Container(child: _actionButtonExit()),
+                    Container(
+                      padding: const EdgeInsets.only(top: 4, bottom: 4, left: 4, right: 8),
+                      decoration: BoxDecoration(
+                        color: Colors.white70,
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: Row(
+                        children: [
+                          SvgPicture.asset(
+                            'assets/icon/point.svg',
+                            width: 20,
+                          ),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          Text(
+                            state.point.toString(),
+                            style: const TextStyle(
+                              color: Colors.black,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -203,6 +224,7 @@ class _GameViewState extends State<GameView> {
                         style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
+                          color: Colors.white,
                         ),
                       ),
                     ),
@@ -229,11 +251,13 @@ class _GameViewState extends State<GameView> {
 
   Widget _option(String title, GameStarted state, BuildContext context) {
     final item = state.data[state.currentQuestionIndex];
-    final Color answeredOptionColor = state.currentAnswer.length > 0
+    final Color answeredOptionColor = state.currentAnswer.isNotEmpty
         ? item.trueAnswer == title
             ? Colors.green
-            : Colors.transparent
-        : Colors.transparent;
+            : title == state.currentAnswer
+                ? Colors.red
+                : Colors.white
+        : Colors.white;
 
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5),

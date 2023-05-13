@@ -17,6 +17,15 @@ class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    GrapRouter.name: (routeData) {
+      return CustomPage<dynamic>(
+        routeData: routeData,
+        child: const GrapView(),
+        transitionsBuilder: TransitionsBuilders.fadeIn,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
     HomeRouter.name: (routeData) {
       return CustomPage<dynamic>(
         routeData: routeData,
@@ -55,8 +64,12 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           '/#redirect',
           path: '/',
-          redirectTo: '/HomeView',
+          redirectTo: '/GrapView',
           fullMatch: true,
+        ),
+        RouteConfig(
+          GrapRouter.name,
+          path: '/GrapView',
         ),
         RouteConfig(
           HomeRouter.name,
@@ -71,6 +84,18 @@ class _$AppRouter extends RootStackRouter {
           path: '/GameView',
         ),
       ];
+}
+
+/// generated route for
+/// [GrapView]
+class GrapRouter extends PageRouteInfo<void> {
+  const GrapRouter()
+      : super(
+          GrapRouter.name,
+          path: '/GrapView',
+        );
+
+  static const String name = 'GrapRouter';
 }
 
 /// generated route for

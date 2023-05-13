@@ -465,6 +465,273 @@ class QuestionData {
           'Weaphones',
         ],
       },
+      {
+        'id': 41,
+        'question':
+            'The Sanctuary, which was the headquarters of the Saviors, was located in what abandoned facility?',
+        'true_answer': 'a factory',
+        'options': [
+          'a prison',
+          'a factory',
+          'a school',
+          'a farm',
+        ],
+      },
+      {
+        'id': 42,
+        'question': "For Rick's group, the Greene Family Farm served as a base for which activity?",
+        'true_answer': 'The search for Sophia',
+        'options': [
+          'For take',
+          'For living',
+          'To cure carl',
+          'The search for Sophia',
+        ],
+      },
+      {
+        'id': 43,
+        'question': 'In which state was the Hilltop located?',
+        'true_answer': 'Virginia',
+        'options': [
+          'Virginia',
+          'Georgia',
+          'Carolina',
+          'Alabama',
+        ],
+      },
+      {
+        'id': 44,
+        'question':
+            'Who shows up on a horse to bring Lori to the Greene Family Farm after Carl is shot?',
+        'true_answer': 'Maggie',
+        'options': [
+          'Nobody',
+          'Maggie',
+          'Hershel',
+          'Beth',
+        ],
+      },
+      {
+        'id': 45,
+        'question': 'Who is the Governor of the Commonwealth?',
+        'true_answer': 'Pamela Milton',
+        'options': [
+          'Pamela Milton',
+          'Mercer',
+          'Yumiko',
+          'Daryl',
+        ],
+      },
+      {
+        'id': 46,
+        'question': 'Who is the Governor of the Commonwealth?',
+        'true_answer': 'Gregory',
+        'options': [
+          'Jesus',
+          'Negan',
+          'Gregory',
+          'Maggie',
+        ],
+      },
+      {
+        'id': 47,
+        'question': 'After the fall of the farm, he declared, "This is not a democracy anymore." ?',
+        'true_answer': 'Rick Grimes',
+        'options': [
+          'Rick Grimes',
+          'Dary Dixon',
+          'Maggie Greene',
+          'Glenn Rhee',
+        ],
+      },
+      {
+        'id': 48,
+        'question': 'Eugene discovers the Commonwealth in his quest to meet what woman?',
+        'true_answer': 'Stephanie',
+        'options': [
+          'Mercer',
+          'Stephanie',
+          'Pamela',
+          'Leah',
+        ],
+      },
+      {
+        'id': 49,
+        'question': 'Who kidnapped Glenn and Meggie?',
+        'true_answer': 'Merle',
+        'options': [
+          'Gavernor',
+          'Daryl',
+          'Merle',
+          'Negan',
+        ],
+      },
+      {
+        'id': 50,
+        'question': 'How were Glenn and Abraham killed?',
+        'true_answer': 'with baseball bat',
+        'options': [
+          'with a gun',
+          'with baseball bat',
+          'with a knife',
+          'walker bite',
+        ],
+      },
+      {
+        'id': 51,
+        'question': 'Who is our character who is not in the comic but is in the series?',
+        'true_answer': 'Daryl',
+        'options': [
+          'Daryl',
+          'Maggie',
+          'Hershel',
+          'Glenn',
+        ],
+      },
+      {
+        'id': 52,
+        'question': 'What do our heroes find in the prison cafeteria?',
+        'true_answer': 'Prisoners',
+        'options': [
+          'Prisoners',
+          'Weaponry',
+          'Health supplies',
+          'Helicopter keys',
+        ],
+      },
+      {
+        'id': 53,
+        'question': 'What is the name of our character who cannot speak?',
+        'true_answer': '',
+        'options': [
+          'Yumiko',
+          'Connie',
+          'Sasha',
+          'Magna',
+        ],
+      },
+      {
+        'id': 54,
+        'question': 'Who is Carl being bitten trying to save?',
+        'true_answer': 'Siddiq',
+        'options': [
+          'Aaron',
+          'Yumiko',
+          'Siddiq',
+          'Daryl',
+        ],
+      },
+      {
+        'id': 55,
+        'question': 'What is Carl sitting on the roof eating?',
+        'true_answer': 'Pudding',
+        'options': [
+          'Cornflakes',
+          'Dog Food',
+          'Apple',
+          'Pudding',
+        ],
+      },
+      {
+        'id': 56,
+        'question': 'Who gave blood to Carl after he was shot?',
+        'true_answer': 'Rick',
+        'options': [
+          'Glenn',
+          'Rick',
+          'Hershel',
+          'Maggie',
+        ],
+      },
+      {
+        'id': 57,
+        'question': 'Who healed Carl after he was shot ?',
+        'true_answer': 'Hershel',
+        'options': [
+          'Maggie',
+          'Beth',
+          'Hershel',
+          'Carol',
+        ],
+      },
+      {
+        'id': 58,
+        'question':
+            '"I want you to be someone who hates me rather than a dead person who loves me" To whom do these words belong?',
+        'true_answer': 'Glenn',
+        'options': [
+          'Lori',
+          'Maggie',
+          'Glenn',
+          'Carol',
+        ],
+      },
+      {
+        'id': 59,
+        'question': 'Where did Sophia disappear ?',
+        'true_answer': 'Highway',
+        'options': [
+          'Atlanta',
+          'Farm',
+          'Highway',
+          'Terminate',
+        ],
+      },
+      {
+        'id': 60,
+        'question': 'Who entered the well with the walker at the bottom ?',
+        'true_answer': 'Glenn',
+        'options': [
+          'T-Dog',
+          'Daryl',
+          'Glenn',
+          'Carl',
+        ],
+      },
+      {
+        'id': 61,
+        'question': 'What were Glenn and Maggie going to town to buy?',
+        'true_answer': 'Medicine',
+        'options': [
+          'Clothes',
+          'Fuel',
+          'Medicine',
+          'Weapon',
+        ],
+      },
+      {
+        'id': 62,
+        'question': 'Who killed Hershel?',
+        'true_answer': 'Governor',
+        'options': [
+          'Walker',
+          'Negan',
+          'Governor',
+          'by himself',
+        ],
+      },
+      {
+        'id': 63,
+        'question': 'What is the name of the group that lives in the zombies?',
+        'true_answer': 'Whisperers',
+        'options': [
+          'Alphas',
+          'The deads',
+          'Alexandria',
+          'Whisperers',
+        ],
+      },
+      {
+        'id': 64,
+        'question': "Which is not one of Rick Grimes' favorite weapons?",
+        'true_answer': 'Baseball bat',
+        'options': [
+          'Ax',
+          'Baseball bat',
+          'Revolver',
+          'Cleaver',
+        ],
+      },
     ];
   }
 }
