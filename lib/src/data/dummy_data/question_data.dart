@@ -732,6 +732,74 @@ class QuestionData {
           'Cleaver',
         ],
       },
+      {
+        'id': 65,
+        'question': "In which season did Carl and the King's tiger die?",
+        'true_answer': '8',
+        'options': [
+          '7',
+          '8',
+          '9',
+          '10',
+        ],
+      },
+      {
+        'id': 66,
+        'question':
+            'What is the name of the prison that becomes a home for the survivors in Season 3 ?',
+        'true_answer': 'West Georgia Correctional Facility',
+        'options': [
+          'The Sanctuary',
+          'Woodbury',
+          'The Farm',
+          'West Georgia Correctional Facility',
+        ],
+      },
+      {
+        'id': 67,
+        'question': 'Which character is known for riding a motorcycle?',
+        'true_answer': 'Daryl Dixon',
+        'options': [
+          'Abraham Ford',
+          'Eugene Porter',
+          'Daryl Dixon',
+          'Merle Dixon',
+        ],
+      },
+      {
+        'id': 68,
+        'question':
+            'Which character sacrifices themselves by blowing up a bridge to prevent a herd of walkers from attacking their community?',
+        'true_answer': 'Rick Grimes',
+        'options': [
+          'Siddiq',
+          'Rick Grimes',
+          'Glenn Rhee',
+          'Carl Grimes',
+        ],
+      },
+      {
+        'id': 69,
+        'question': 'Which character cuts off his own arm to get rid of zombies?',
+        'true_answer': 'Merle Dixon',
+        'options': [
+          'Merle Dixon',
+          'Rick Grimes',
+          'Aaron',
+          'Hershel',
+        ],
+      },
+      {
+        'id': 70,
+        'question': 'What pattern does Dary have on the back of his jacket?',
+        'true_answer': 'Wings',
+        'options': [
+          'Wings',
+          'Devil',
+          'Skull',
+          'Weapon',
+        ],
+      },
     ];
   }
 }
