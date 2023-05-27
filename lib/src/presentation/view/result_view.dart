@@ -34,10 +34,11 @@ class _ResultViewState extends State<ResultView> {
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/homebg.jpg'),
-            fit: BoxFit.cover,
-          ),
+          // image: DecorationImage(
+          //   image: AssetImage('assets/images/homebg.jpg'),
+          //   fit: BoxFit.cover,
+          // ),
+          color: AppColor.darkBlue,
         ),
         alignment: Alignment.center,
         child: Column(
@@ -67,7 +68,7 @@ class _ResultViewState extends State<ResultView> {
             width: 1.sw,
             height: .75.sh,
             decoration: BoxDecoration(
-              color: AppColor.transparentWhite,
+              // color: AppColor.transparentWhite,
               borderRadius: BorderRadius.circular(10),
             ),
             child: Column(
@@ -80,21 +81,23 @@ class _ResultViewState extends State<ResultView> {
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
+                        color: Colors.white,
                       ),
                     ),
                     AnimatedCircularChart(
                       size: const Size(300, 300),
+
                       initialChartData: <CircularStackEntry>[
                         CircularStackEntry(
                           <CircularSegmentEntry>[
                             CircularSegmentEntry(
-                              state.ffalse.toDouble() * 10,
-                              Colors.red[600],
+                              state.ttrue.toDouble() * 10,
+                              Colors.green[600],
                               rankKey: 'remaining',
                             ),
                             CircularSegmentEntry(
-                              state.ttrue.toDouble() * 10,
-                              Colors.green[400],
+                              state.ffalse.toDouble() * 10,
+                              Colors.red[400],
                               rankKey: 'completed',
                             ),
                           ],
@@ -105,9 +108,10 @@ class _ResultViewState extends State<ResultView> {
                       labelStyle: const TextStyle(
                         fontSize: 50,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black,
+                        color: Color.fromARGB(255, 255, 255, 255),
                       ),
                       // chartType: CircularChartType.Radial,
+                      duration: const Duration(seconds: 1),
                       edgeStyle: SegmentEdgeStyle.round,
                       percentageValues: true,
                     )
