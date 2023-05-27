@@ -15,7 +15,7 @@ class ButtonArea extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: const Color.fromARGB(163, 255, 255, 255),
+        // color: const Color.fromARGB(163, 255, 255, 255),
         borderRadius: BorderRadius.circular(20),
       ),
       width: .86.sw,
