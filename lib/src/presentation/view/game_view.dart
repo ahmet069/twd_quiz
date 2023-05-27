@@ -8,6 +8,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import '../../../main.dart';
+import '../../config/color/app_color.dart';
 import '../../config/router/app_router.dart';
 import '../../core/constants/app_constants.dart';
 import '../../domain/entities/question/question.dart';
@@ -78,11 +79,14 @@ class _GameViewState extends State<GameView> {
         padding: const EdgeInsets.only(top: 75),
         width: 1.sw,
         height: 1.sh,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/homebg2.jpg'),
-            fit: BoxFit.cover,
-          ),
+        // decoration: const BoxDecoration(
+        //   image: DecorationImage(
+        //     image: AssetImage('assets/images/homebg2.jpg'),
+        //     fit: BoxFit.cover,
+        //   ),
+        // ),
+        decoration: BoxDecoration(
+          color: AppColor.lightBlue,
         ),
         alignment: Alignment.topCenter,
         child: Padding(
@@ -148,7 +152,7 @@ class _GameViewState extends State<GameView> {
       height: .7.sh,
       width: 1.sw - 20,
       decoration: BoxDecoration(
-        color: const Color.fromARGB(33, 253, 253, 253),
+        color: AppColor.darkBlue,
         borderRadius: BorderRadius.circular(20),
       ),
       child: BlocBuilder<GameBloc, GameState>(
@@ -232,23 +236,26 @@ class _GameViewState extends State<GameView> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
                       margin: const EdgeInsets.symmetric(vertical: 30),
                       child: Text(
                         item.question.toString(),
                         textAlign: TextAlign.center,
                         style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                          // wordSpacing: 3,
+
                           color: Colors.white,
                         ),
                       ),
                     ),
                     Column(
                       children: [
-                        _option(item.options![0], state, context),
-                        _option(item.options![1], state, context),
-                        _option(item.options![2], state, context),
-                        _option(item.options![3], state, context),
+                        _option(item.options![0], 'A', state, context),
+                        _option(item.options![1], 'B', state, context),
+                        _option(item.options![2], 'C', state, context),
+                        _option(item.options![3], 'D', state, context),
                       ],
                     ),
                   ],
@@ -264,7 +271,7 @@ class _GameViewState extends State<GameView> {
     );
   }
 
-  Widget _option(String title, GameStarted state, BuildContext context) {
+  Widget _option(String title, String word, GameStarted state, BuildContext context) {
     final item = state.data[state.currentQuestionIndex];
     final Color answeredOptionColor = state.currentAnswer.isNotEmpty
         ? item.trueAnswer == title
@@ -275,9 +282,10 @@ class _GameViewState extends State<GameView> {
         : Colors.white;
 
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 5),
-      height: 48,
-      width: .9.sw,
+      margin: const EdgeInsets.symmetric(vertical: 7),
+      // padding: const EdgeInsets.symmetric(horizontal: 2),
+      height: 60,
+      width: .87.sw,
       child: ElevatedButton(
         onPressed: () async {
           if (state.currentAnswer.isNotEmpty) {
@@ -296,13 +304,34 @@ class _GameViewState extends State<GameView> {
           backgroundColor: answeredOptionColor,
           elevation: 0,
           shape: RoundedRectangleBorder(
-            side: const BorderSide(),
             borderRadius: BorderRadius.circular(30),
           ),
         ),
-        child: Text(
-          title,
-          style: const TextStyle(color: Colors.black, fontSize: 18),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Container(
+            //   width: 50,
+            //   height: 50,
+            //   alignment: Alignment.center,
+            //   decoration: BoxDecoration(
+            //     color: AppColor.lightBlue,
+            //     borderRadius: BorderRadius.circular(50),
+            //   ),
+            //   child: Text(
+            //     word,
+            //     style: const TextStyle(
+            //       color: Colors.black,
+            //     ),
+            //   ),
+            // ),
+            Container(
+              child: Text(
+                title,
+                style: const TextStyle(color: Colors.black, fontSize: 18),
+              ),
+            ),
+          ],
         ),
       ),
     );
