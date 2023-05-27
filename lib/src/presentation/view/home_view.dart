@@ -4,9 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-import '../../core/components/Admob/my_admob_banner.dart';
+import '../../config/color/app_color.dart';
 import '../bloc/home_bloc/home_bloc.dart';
 import '../widget/home/button_area.dart';
+import '../widget/home/home_bottom.dart';
+import '../widget/home/home_header.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -55,29 +57,29 @@ class _HomeViewState extends State<HomeView> {
                 width: 1.sw,
                 alignment: Alignment.center,
                 decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/homebg.jpg'),
-                    fit: BoxFit.cover,
-                  ),
+                  color: AppColor.darkBlue,
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(top: 10.0),
-                      child: MyAdmobBanner(
-                        bannerId: 'ca-app-pub-4086698259318942/8570777432',
-                        adSize: AdSize.fullBanner,
-                      ),
-                    ),
+                  children: const [
+                    HomeHeader(),
+                    // Padding(
+                    //   padding: EdgeInsets.only(top: 10.0),
+                    //   child: MyAdmobBanner(
+                    //     bannerId: 'ca-app-pub-4086698259318942/8570777432',
+                    //     adSize: AdSize.fullBanner,
+                    //   ),
+                    // ),
                     ButtonArea(),
-                    Padding(
-                      padding: EdgeInsets.only(bottom: 10.0),
-                      child: MyAdmobBanner(
-                        bannerId: 'ca-app-pub-4086698259318942/1853195962',
-                        adSize: AdSize.fullBanner,
-                      ),
-                    ),
+                    // Padding(
+                    //   padding: EdgeInsets.only(bottom: 10.0),
+                    //   child: MyAdmobBanner(
+                    //     bannerId: 'ca-app-pub-4086698259318942/1853195962',
+                    //     adSize: AdSize.fullBanner,
+                    //   ),
+                    // ),
+                    HomeBottom(),
+                    // Placeholder(),
                   ],
                 ),
               ),
