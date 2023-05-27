@@ -380,7 +380,7 @@ class QuestionData {
       {
         'id': 33,
         'question': 'Where is Glenn from ?',
-        'true_answer': 'Korea',
+        'true_answer': 'Korean',
         'options': [
           'Japanese',
           'Chinese',

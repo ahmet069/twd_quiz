@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/scheduler.dart';
 
 import '../../../domain/entities/question/question.dart';
 import '../../../domain/usecase/question_usecase.dart';
@@ -23,6 +24,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   GameBloc(this._usecase) : super(GameInitial()) {
     on<StartGame>(
       (event, emit) async {
+        emit(const GameLoading());
         point = 0;
         ttrue = 0;
         ffalse = 0;
@@ -30,6 +32,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         dataList = await _usecase.getAllQuestions();
         dataList.shuffle(_seed);
         currentAnswer = '';
+        await Future.delayed(const Duration(milliseconds: 1500));
         emit(
           GameStarted(
               ttrue: ttrue,

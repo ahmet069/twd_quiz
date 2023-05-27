@@ -9,7 +9,6 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import '../../../main.dart';
 import '../../config/router/app_router.dart';
-import '../../core/components/Admob/my_admob_banner.dart';
 import '../../core/constants/app_constants.dart';
 import '../../domain/entities/question/question.dart';
 import '../bloc/game_bloc/game_bloc.dart';
@@ -24,7 +23,7 @@ class GameView extends StatefulWidget {
 
 InterstitialAd? interstitialAd;
 //* interstitial
-void _createInterstitialAd() {
+Future<void> _createInterstitialAd() async {
   InterstitialAd.load(
     adUnitId: kDebugMode
         ? 'ca-app-pub-3940256099942544/8691691433' // test id
@@ -73,6 +72,8 @@ class _GameViewState extends State<GameView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: _actionButtonExit(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
       body: Container(
         padding: const EdgeInsets.only(top: 75),
         width: 1.sw,
@@ -87,13 +88,14 @@ class _GameViewState extends State<GameView> {
         child: Padding(
           padding: const EdgeInsets.only(bottom: 20.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _questionContainer(),
-              const MyAdmobBanner(
-                bannerId: 'ca-app-pub-4086698259318942/8795258277',
-                adSize: AdSize.fullBanner,
-              )
+              //* reklan deactived
+              // const MyAdmobBanner(
+              //   bannerId: 'ca-app-pub-4086698259318942/8795258277',
+              //   adSize: AdSize.fullBanner,
+              // )
             ],
           ),
         ),
@@ -142,76 +144,89 @@ class _GameViewState extends State<GameView> {
 
   Widget _questionContainer() {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 17),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
       height: .7.sh,
       width: 1.sw - 20,
       decoration: BoxDecoration(
-        color: const Color.fromARGB(200, 0, 0, 0),
+        color: const Color.fromARGB(33, 253, 253, 253),
         borderRadius: BorderRadius.circular(20),
       ),
       child: BlocBuilder<GameBloc, GameState>(
         builder: (context, state) {
           //? GAME STARTED
-          if (state is GameStarted) {
+          if (state is GameLoading) {
+            return SizedBox(
+              width: .05.sw,
+              height: .05.sw,
+              child: const CircularProgressIndicator.adaptive(
+                backgroundColor: Colors.red,
+                strokeWidth: 7.0,
+              ),
+            );
+          } else if (state is GameStarted) {
             final item = state.data[state.currentQuestionIndex];
             return Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.only(top: 4, bottom: 4, left: 4, right: 5),
-                      decoration: BoxDecoration(
-                        color: Colors.white70,
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      child: Row(
-                        children: [
-                          SvgPicture.asset(
-                            'assets/icon/question_mark.svg',
-                            height: 24,
-                            color: const Color(0xff404040),
-                          ),
-                          const SizedBox(
-                            width: 4,
-                          ),
-                          Text(
-                            '${state.currentQuestionIndex + 1} / 10',
-                            style: const TextStyle(
-                              fontSize: 16,
-                              color: Colors.black,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.only(top: 4, bottom: 4, left: 4, right: 5),
+                        decoration: BoxDecoration(
+                          color: Colors.white70,
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: Row(
+                          children: [
+                            SvgPicture.asset(
+                              'assets/icon/question_mark.svg',
+                              height: 24,
+                              color: const Color(0xff404040),
                             ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(child: _actionButtonExit()),
-                    Container(
-                      padding: const EdgeInsets.only(top: 4, bottom: 4, left: 4, right: 8),
-                      decoration: BoxDecoration(
-                        color: Colors.white70,
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      child: Row(
-                        children: [
-                          SvgPicture.asset(
-                            'assets/icon/point.svg',
-                            width: 20,
-                          ),
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          Text(
-                            state.point.toString(),
-                            style: const TextStyle(
-                              color: Colors.black,
+                            const SizedBox(
+                              width: 4,
                             ),
-                          ),
-                        ],
+                            Text(
+                              '${state.currentQuestionIndex + 1} / 10',
+                              style: const TextStyle(
+                                fontSize: 16,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                      // Container(child: _actionButtonExit()),
+
+                      Container(
+                        padding: const EdgeInsets.only(top: 4, bottom: 4, left: 4, right: 8),
+                        decoration: BoxDecoration(
+                          color: Colors.white70,
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: Row(
+                          children: [
+                            SvgPicture.asset(
+                              'assets/icon/point.svg',
+                              width: 20,
+                            ),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              state.point.toString(),
+                              style: const TextStyle(
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

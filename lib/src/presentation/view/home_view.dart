@@ -7,7 +7,6 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '../../core/components/Admob/my_admob_banner.dart';
 import '../bloc/home_bloc/home_bloc.dart';
 import '../widget/home/button_area.dart';
-import 'LineCharWidget.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -23,12 +22,10 @@ class _HomeViewState extends State<HomeView> {
     if (result == ConnectivityResult.none) {
       setState(() {
         isConnected = false;
-        print(false);
       });
     } else {
       setState(() {
         isConnected = true;
-        print(true);
       });
     }
   }

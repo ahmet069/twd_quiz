@@ -9,6 +9,10 @@ abstract class GameState extends Equatable {
 
 class GameInitial extends GameState {}
 
+class GameLoading extends GameState {
+  const GameLoading();
+}
+
 class GameStarted extends GameState {
   final int ttrue;
   final int ffalse;
