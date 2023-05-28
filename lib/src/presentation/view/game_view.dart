@@ -10,6 +10,7 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '../../../main.dart';
 import '../../config/color/app_color.dart';
 import '../../config/router/app_router.dart';
+import '../../core/components/Admob/my_admob_banner.dart';
 import '../../core/constants/app_constants.dart';
 import '../../domain/entities/question/question.dart';
 import '../bloc/game_bloc/game_bloc.dart';
@@ -85,21 +86,23 @@ class _GameViewState extends State<GameView> {
         //     fit: BoxFit.cover,
         //   ),
         // ),
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: AppColor.lightBlue,
         ),
         alignment: Alignment.topCenter,
         child: Padding(
           padding: const EdgeInsets.only(bottom: 20.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              Container(),
               _questionContainer(),
               //* reklan deactived
-              // const MyAdmobBanner(
-              //   bannerId: 'ca-app-pub-4086698259318942/8795258277',
-              //   adSize: AdSize.fullBanner,
-              // )
+              const MyAdmobBanner(
+                bannerId: 'ca-app-pub-4086698259318942/8795258277',
+                adSize: AdSize.fullBanner,
+              ),
+              // Container(),
             ],
           ),
         ),
@@ -163,7 +166,7 @@ class _GameViewState extends State<GameView> {
               width: .05.sw,
               height: .05.sw,
               child: const CircularProgressIndicator.adaptive(
-                backgroundColor: Colors.red,
+                backgroundColor: Color.fromARGB(255, 255, 255, 255),
                 strokeWidth: 7.0,
               ),
             );

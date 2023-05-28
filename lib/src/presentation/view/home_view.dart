@@ -2,13 +2,13 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import '../../config/color/app_color.dart';
 import '../bloc/home_bloc/home_bloc.dart';
 import '../widget/home/button_area.dart';
 import '../widget/home/home_bottom.dart';
 import '../widget/home/home_header.dart';
+import 'network_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -40,11 +40,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     if (!isConnected) {
-      return const Scaffold(
-        body: Center(
-          child: Text('Check your internet connection and try again ?'),
-        ),
-      );
+      return const NetworkView();
     } else {
       return BlocBuilder<HomeBloc, HomeState>(
         builder: (context, state) {
