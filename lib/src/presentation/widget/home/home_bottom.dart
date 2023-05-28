@@ -9,6 +9,7 @@ class HomeBottom extends StatelessWidget {
     return Container(
       width: 1.sw,
       height: .12.sh,
+      alignment: Alignment.center,
       decoration: BoxDecoration(
         color: const Color.fromARGB(86, 255, 255, 255),
         borderRadius: BorderRadius.vertical(top: Radius.elliptical(.40.sw, .10.sw)),
@@ -17,6 +18,13 @@ class HomeBottom extends StatelessWidget {
       //   bannerId: 'ca-app-pub-4086698259318942/1853195962',
       //   adSize: AdSize.mediumRectangle,
       // ),
+      child: const Text(
+        'SOON...',
+        style: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
     );
   }
 }
