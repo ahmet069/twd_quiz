@@ -25,7 +25,7 @@ class GameView extends StatefulWidget {
 
 InterstitialAd? interstitialAd;
 //* interstitial
-Future<void> _createInterstitialAd() async {
+void _createInterstitialAd() {
   InterstitialAd.load(
     adUnitId: kDebugMode
         ? 'ca-app-pub-3940256099942544/8691691433' // test id
@@ -165,9 +165,11 @@ class _GameViewState extends State<GameView> {
             return SizedBox(
               width: .05.sw,
               height: .05.sw,
-              child: const CircularProgressIndicator.adaptive(
-                backgroundColor: Color.fromARGB(255, 255, 255, 255),
-                strokeWidth: 7.0,
+              child: const Center(
+                child: CircularProgressIndicator.adaptive(
+                  backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                  strokeWidth: 7.0,
+                ),
               ),
             );
           } else if (state is GameStarted) {

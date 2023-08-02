@@ -1,0 +1,7 @@
+{
+    "workbench.sideBar.location": "left",
+    "workbench.view.alwaysShowHeaderActions": true,
+    "workbench.tree.renderIndentGuides": "onHover",
+    "workbench.tree.indent": 10,
+    "workbench.tree.expandMode": "singleClick"
+}

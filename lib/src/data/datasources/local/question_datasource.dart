@@ -1,7 +1,7 @@
 import '../../dummy_data/question_data.dart';
 import '../../models/question_model/question_model.dart';
 
-abstract class QuestionDataSource {
+abstract class  QuestionDataSource {
   Future<List<QuestionModel>> getAllQuestions();
 }
 
