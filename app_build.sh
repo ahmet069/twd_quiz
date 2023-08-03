@@ -1,1 +1,1 @@
-flutter build appbundle --no-tree-shake-icons --build-name=1.0.9 --build-number=9
+flutter build appbundle --no-tree-shake-icons --build-name=1.1.0 --build-number=10

@@ -25,8 +25,7 @@ class QuestionData {
       },
       {
         'id': 2,
-        'question':
-            'In Season 3 of The Walking Dead, how long did Michonne and Andrea survive on their own?',
+        'question': 'In Season 3 of The Walking Dead, how long did Michonne and Andrea survive on their own?',
         'true_answer': '8 months',
         'options': [
           '2 year',
@@ -70,8 +69,7 @@ class QuestionData {
       },
       {
         'id': 6,
-        'question':
-            'In The Walking Dead, the Governor tells the Woodbury citizens they were betrayed by who?',
+        'question': 'In The Walking Dead, the Governor tells the Woodbury citizens they were betrayed by who?',
         'true_answer': 'Merle',
         'options': [
           'Merle',
@@ -104,8 +102,7 @@ class QuestionData {
       },
       {
         'id': 9,
-        'question':
-            "In The Walking Dead, who drops Merle's handcuff key and accidentally leaves him for the walkers?",
+        'question': "In The Walking Dead, who drops Merle's handcuff key and accidentally leaves him for the walkers?",
         'true_answer': 'T-Dog',
         'options': [
           'Glenn Rhee',
@@ -215,17 +212,17 @@ class QuestionData {
           'Maggie',
         ],
       },
-      {
-        'id': 19,
-        'question': 'Who accidentally shoots Carl in Season 2 of The Walking Dead?',
-        'true_answer': 'Otis',
-        'options': [
-          'Shane',
-          'Otis',
-          'Hershel',
-          'Morgan',
-        ],
-      },
+      // {
+      //   'id': 19,
+      //   'question': 'Who accidentally shoots Carl in Season 2 of The Walking Dead?',
+      //   'true_answer': 'Otis',
+      //   'options': [
+      //     'Shane',
+      //     'Otis',
+      //     'Hershel',
+      //     'Morgan',
+      //   ],
+      // },
       {
         'id': 20,
         'question': 'Who accidentally shoots Carl in Season 2 of The Walking Dead?',
@@ -239,8 +236,7 @@ class QuestionData {
       },
       {
         'id': 21,
-        'question':
-            'What kind of car does Glenn steal and drive out of Atlanta in The Walking Dead?',
+        'question': 'What kind of car does Glenn steal and drive out of Atlanta in The Walking Dead?',
         'true_answer': 'Dodge Challenger',
         'options': [
           'Chevrolet Corvette',
@@ -251,8 +247,7 @@ class QuestionData {
       },
       {
         'id': 22,
-        'question':
-            'What do the survivors theorize most attracts walkers to humans on The Walking Dead?',
+        'question': 'What do the survivors theorize most attracts walkers to humans on The Walking Dead?',
         'true_answer': 'Smell',
         'options': [
           'Hate',
@@ -263,8 +258,7 @@ class QuestionData {
       },
       {
         'id': 23,
-        'question':
-            'Season 1 of The Walking Dead takes place primarily en route to and from what major city?',
+        'question': 'Season 1 of The Walking Dead takes place primarily en route to and from what major city?',
         'true_answer': 'Atlanta',
         'options': [
           'Atlanta',
@@ -310,8 +304,7 @@ class QuestionData {
       },
       {
         'id': 27,
-        'question':
-            'In The Walking Dead, what does the Governor use to put down David after he turns into a walker?',
+        'question': 'In The Walking Dead, what does the Governor use to put down David after he turns into a walker?',
         'true_answer': 'Oxygen tank',
         'options': [
           'Oxygen tank',
@@ -320,17 +313,17 @@ class QuestionData {
           'Revoler',
         ],
       },
-      {
-        'id': 28,
-        'question': 'In The Walking Dead, what animal is Carl watching when he gets shot?',
-        'true_answer': 'Deer',
-        'options': [
-          'Cow',
-          'Wold',
-          'Deer',
-          'Eagle',
-        ],
-      },
+      // {
+      //   'id': 28,
+      //   'question': 'In The Walking Dead, what animal is Carl watching when he gets shot?',
+      //   'true_answer': 'Deer',
+      //   'options': [
+      //     'Cow',
+      //     'Wold',
+      //     'Deer',
+      //     'Eagle',
+      //   ],
+      // },
       {
         'id': 29,
         'question': 'Around what was the Kingdom built?',
@@ -344,8 +337,7 @@ class QuestionData {
       },
       {
         'id': 30,
-        'question':
-            'Who shows up on a horse to bring Lori to the Greene Family Farm after Carl is shot?',
+        'question': 'Who shows up on a horse to bring Lori to the Greene Family Farm after Carl is shot?',
         'true_answer': 'Maggie',
         'options': [
           'Beth',
@@ -356,8 +348,7 @@ class QuestionData {
       },
       {
         'id': 31,
-        'question':
-            "In which season did Rick say the phrase 'we tell ourselves we're the walking dead'?",
+        'question': "In which season did Rick say the phrase 'we tell ourselves we're the walking dead'?",
         'true_answer': '5',
         'options': [
           '3',
@@ -467,8 +458,7 @@ class QuestionData {
       },
       {
         'id': 41,
-        'question':
-            'The Sanctuary, which was the headquarters of the Saviors, was located in what abandoned facility?',
+        'question': 'The Sanctuary, which was the headquarters of the Saviors, was located in what abandoned facility?',
         'true_answer': 'a factory',
         'options': [
           'a prison',
@@ -501,8 +491,7 @@ class QuestionData {
       },
       {
         'id': 44,
-        'question':
-            'Who shows up on a horse to bring Lori to the Greene Family Farm after Carl is shot?',
+        'question': 'Who shows up on a horse to bring Lori to the Greene Family Farm after Carl is shot?',
         'true_answer': 'Maggie',
         'options': [
           'Nobody',
@@ -602,7 +591,7 @@ class QuestionData {
       {
         'id': 53,
         'question': 'What is the name of our character who cannot speak?',
-        'true_answer': '',
+        'true_answer': 'Connie',
         'options': [
           'Yumiko',
           'Connie',
@@ -745,8 +734,7 @@ class QuestionData {
       },
       {
         'id': 66,
-        'question':
-            'What is the name of the prison that becomes a home for the survivors in Season 3 ?',
+        'question': 'What is the name of the prison that becomes a home for the survivors in Season 3 ?',
         'true_answer': 'West Georgia Correctional Facility',
         'options': [
           'The Sanctuary',
